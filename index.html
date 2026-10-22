@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07152f" />
+  <title>DEVOO LEARNING</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #07152f;
+      --blue: #2f7bff;
+      --cyan: #38d9ff;
+      --muted: #b8c5dc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      width: 100%;
+      min-height: 100%;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      width: 100%;
+      min-width: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 24px 16px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 15% 15%, rgba(47,123,255,.25), transparent 38%),
+        radial-gradient(ellipse at 90% 70%, rgba(56,217,255,.16), transparent 34%),
+        linear-gradient(145deg, #061126 0%, #0a1d3e 55%, #07152f 100%);
+      overflow-x: hidden;
+    }
+    main {
+      width: 100%;
+      min-width: 0;
+      max-width: 520px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 0 34px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(130,185,255,.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: #d8e8ff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    .eyebrow-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #4dffb5; box-shadow: 0 0 12px #4dffb5;
+    }
+    h1 {
+      font-size: clamp(27px, 7vw, 39px);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      margin-bottom: 12px;
+    }
+    h1 span {
+      color: transparent;
+      background: linear-gradient(90deg, #fff 5%, #8dcaff 55%, #48e2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+    .logo-link {
+      display: inline-flex;
+      border-radius: 50%;
+      text-decoration: none;
+      margin: 28px auto 24px;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .logo-link:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.12);
+    }
+    .logo-link:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 6px;
+    }
+    .logo-circle {
+      width: 158px;
+      height: 158px;
+      margin: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,.22), transparent 30%),
+        linear-gradient(145deg, #173f79 0%, #0b2450 48%, #07142d 100%);
+      border: 2px solid #8ceaff;
+      box-shadow: 0 0 0 6px rgba(47,123,255,.08), 0 0 35px rgba(56,217,255,.28), inset 0 0 24px rgba(56,217,255,.12);
+    }
+    .logo-circle::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(140,234,255,.45);
+    }
+    .logo-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      z-index: 1;
+    }
+    .logo-mark {
+      width: 53px;
+      height: 53px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      transform: rotate(-8deg);
+      background: linear-gradient(135deg, #9af5ff, #4e9cff);
+      color: #092047;
+      font-size: 31px;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: 0 5px 18px rgba(0,0,0,.22);
+    }
+    .logo-circle span {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.05px;
+      max-width: 120px;
+      line-height: 1.35;
+      color: #f3fbff;
+    }
+    .tagline-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 15px;
+      width: 100%;
+      max-width: 420px;
+      padding: 0 4px;
+    }
+    .tagline-pill {
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(140,210,255,.2);
+      background: rgba(255,255,255,.055);
+      color: #dcecff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1px;
+    }
+    .timer-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      margin: 0 0 24px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 16px;
+      background: rgba(255,255,255,.065);
+      box-shadow: 0 12px 35px rgba(0,0,0,.12);
+    }
+    .timer-icon { font-size: 23px; }
+    .timer-copy { text-align: left; }
+    .timer-label { color: #b8c5dc; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; }
+    .timer { color: #fff; font-size: 18px; font-weight: 800; margin-top: 3px; }
+    #countdown { color: #65e4ff; font-variant-numeric: tabular-nums; }
+    .subs { font-size: 16px; font-weight: 700; margin-bottom: 9px; }
+    .check-text { color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 24px; }
+    .view-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: min(100%, 290px);
+      padding: 15px 24px;
+      border-radius: 14px;
+      color: #06152d;
+      background: linear-gradient(100deg, #77f0ff, #5da2ff);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .7px;
+      box-shadow: 0 10px 28px rgba(47,123,255,.3);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .view-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(47,123,255,.42); }
+    .view-btn:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .footer-text { margin-top: 20px; color: #b8c5dc; font-size: 12px; line-height: 1.7; }
+    .credit { width: 100%; margin: 0 0 14px; color: #a9b9d2; font-size: 12px; }
+    .credit a, .footer-links a { color: #80dfff; text-decoration: none; font-weight: 600; }
+    .disclaimer {
+      width: 100%;
+      max-width: 760px;
+      max-width: 760px;
+      padding: 15px 18px;
+      color: #9eacc4;
+      background: rgba(0,0,0,.17);
+      border-top: 1px solid rgba(255,255,255,.09);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+    .disclaimer strong { color: #dce8fa; }
+    .footer-links {
+      width: 100%;
+      padding: 13px 16px 19px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,.17);
+      font-size: 11px;
+    }
+    .footer-links span { color: #526b8e; }
+    @media (max-width: 600px) {
+      body {
+        padding: 18px 14px 0;
+      }
+      main {
+        max-width: 100%;
+        padding: 22px 0 28px;
+      }
+      .eyebrow {
+        max-width: 100%;
+        font-size: 9px;
+        letter-spacing: 1px;
+        padding: 8px 11px;
+      }
+      h1 {
+        font-size: clamp(24px, 7.2vw, 34px);
+        letter-spacing: 1px;
+        overflow-wrap: anywhere;
+      }
+      .tagline {
+        width: 100%;
+        max-width: 340px;
+        font-size: 13px;
+      }
+      .tagline-list {
+        gap: 7px;
+        margin-top: 13px;
+      }
+      .tagline-pill {
+        max-width: 100%;
+        padding: 7px 9px;
+        font-size: 10px;
+        line-height: 1.35;
+      }
+      .logo-link {
+        margin: 22px auto 20px;
+      }
+      .logo-circle {
+        width: 132px;
+        height: 132px;
+      }
+      .logo-mark {
+        width: 46px;
+        height: 46px;
+        font-size: 27px;
+      }
+      .logo-circle span {
+        font-size: 10px;
+      }
+      .timer-card {
+        max-width: 100%;
+        padding: 11px 15px;
+        margin-bottom: 21px;
+      }
+      .subs {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .check-text {
+        max-width: 100%;
+        font-size: 12px;
+      }
+      .view-btn {
+        width: 100%;
+        max-width: 290px;
+        min-height: 48px;
+      }
+      .footer-text {
+        font-size: 11px;
+        padding: 0 4px;
+      }
+      .credit {
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+      }
+      .disclaimer {
+        padding: 13px 12px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+      }
+      .footer-links {
+        padding: 13px 10px 18px;
+        flex-wrap: wrap;
+      }
+    }
+    @media (max-width: 360px) {
+      body { padding-left: 10px; padding-right: 10px; }
+      h1 { font-size: 23px; }
+      .eyebrow { font-size: 8px; gap: 6px; }
+      .tagline-pill { font-size: 9px; }
+      .logo-link { margin: 20px auto 18px; }
+      .logo-circle { width: 120px; height: 120px; }
+      .timer { font-size: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT STEP STARTS HERE</div>
+    <h1><span>DEVOO LEARNING</span></h1>
+    <p class="tagline">Your journey to knowledge, growth, and new possibilities.</p>
+    <div class="tagline-list" aria-label="Our values">
+      <span class="tagline-pill">✨ Learn with Purpose</span>
+      <span class="tagline-pill">🚀 Grow with Confidence</span>
+      <span class="tagline-pill">💡 Discover New Possibilities</span>
+      <span class="tagline-pill">🌟 Make Every Step Count</span>
+    </div>
+
+    <a class="logo-link" href="https://deevo247.com" aria-label="Visit DEVOO LEARNING website">
+      <div class="logo-circle">
+        <div class="logo-inner">
+          <div class="logo-mark" aria-hidden="true">D</div>
+          <span>DEVOO LEARNING</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="timer-card" role="status" aria-live="polite">
+      <div class="timer-icon" aria-hidden="true">⏳</div>
+      <div class="timer-copy">
+        <div class="timer-label">REDIRECTING YOU IN</div>
+        <div class="timer"><span id="countdown">5</span> seconds</div>
+      </div>
+    </div>
+
+    <p class="subs">Join our growing community</p>
+    <p class="check-text">✅ Discover opportunities and take your next step.</p>
+    <a href="https://deevo247.com" class="view-btn">GET STARTED <span aria-hidden="true">→</span></a>
+    <p class="footer-text">💎 Precision. Power. Passion. 🌍<br>Make your next move today.</p>
+  </main>
+
+  <div class="credit">
+    Ads managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9" target="_blank" rel="noopener noreferrer">@Nexgroww_agency</a>
+  </div>
+
+  <section class="disclaimer">
+    <strong>Disclaimer:</strong> This is an independent informational page. We are not affiliated with any third-party service. Use of any linked platform is at your own discretion and responsibility. No guarantees of any kind are made.
+  </section>
+
+  <div class="footer-links">
+    <a href="https://deevo247.com">Privacy Policy</a>
+    <span>|</span>
+    <a href="https://deevo247.com">Contact Us</a>
+  </div>
+
+  <!-- <script>
+    (() => {
+      let countdown = 5;
+      const el = document.getElementById("countdown");
+      const destination = "https://deevo247.com";
+      const timer = window.setInterval(() => {
+        countdown -= 1;
+        if (countdown <= 0) {
+          el.textContent = "0";
+          window.clearInterval(timer);
+          window.location.href = destination;
+          return;
+        }
+        el.textContent = String(countdown);
+      }, 1000);
+    })();
+  </script> -->
+
+ <!-- Meta Pixel Code -->
+<script>
+
+!function(f,b,e,v,n,t,s)
+
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
+n.queue=[];t=b.createElement(e);t.async=!0;
+
+t.src=v;s=b.getElementsByTagName(e)[0];
+
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '2088764938482332');
+
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+
+src="https://www.facebook.com/tr?id=2088764938482332&ev=PageView&noscript=1"
+
+/></noscript>
+<!-- End Meta Pixel Code -->
+ 
+</body>
+</html>
